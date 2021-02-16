@@ -27,6 +27,11 @@ export default {
       name: 'bio',
       type: 'bioPortableText',
       title: 'Biography'
+    },
+    {
+      name: 'socialLinks',
+      type: 'socialLinks', // references socialLinks object
+      title: 'Social Links'
     }
   ],
   preview: {

@@ -1,14 +1,13 @@
 ---
 layout: layouts/base.njk
-templateClass: tmpl-author
+templateClass: tmpl-category
 ---
-<h1>{{ author.name }}</h1>
+<h1>{{ category.title }}</h1>
 
-{{ author.bio | markdownify | safe }}
+{{ category.description | markdownify | safe }}
 
-<h2>Posts by {{ author.name }}</h2>
-<ul class="authorposts">
-{% for post in author.posts | reverse %}
+<ul class="posts">
+{% for post in category.posts | reverse %}
   <li class="postlist-item"> 
    <img src="{% croppedUrlFor post.mainImage, 600, 600 %}" alt="{{ post.mainImage.alt }}">
    <h3><a href="/posts/{{post.slug.current | url }}">{{post.title}}</a></h3>

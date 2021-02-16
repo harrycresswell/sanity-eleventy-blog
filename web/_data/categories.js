@@ -1,32 +1,29 @@
 const groq = require('groq')
-const BlocksToMarkdown = require('@sanity/block-content-to-markdown')
 const client = require('../utils/sanityClient.js')
-const serializers = require('../utils/serializers')
 const overlayDrafts = require('../utils/overlayDrafts')
 
 const hasToken = !!client.config().token
 
-function generateAuthor (author) {
+function generateCategory(category) {
   return {
-    ...author,
-    bio: BlocksToMarkdown(author.bio, { serializers, ...client.config() })
+    ...category,
   }
 }
 
-async function getAuthors () {
-  const filter = groq`*[_type == "author"]`
+async function getCategories () {
+  const filter = groq`*[_type == "category"]`
   // https://www.sanity.io/docs/how-queries-work#our-first-join-52023b22ca05
   const projection = groq`{
-    // grab author data
-    _id, name, bio,
+    // grab category data
+    ...,
     // grab posts that reference author
    "posts": *[_type == "post" && references(^._id)]{title, slug, mainImage}
   }`
   const query = [filter, projection].join(' ')
   const docs = await client.fetch(query).catch(err => console.error(err))
-  const authors = docs.map(generateAuthor)
-  const reducedAuthors = overlayDrafts(hasToken, authors)
-  return reducedAuthors
+  const categories = docs.map(generateCategory)
+  const reducedCategories = overlayDrafts(hasToken, categories)
+  return reducedCategories
 }
 
-module.exports = getAuthors
+module.exports = getCategories

@@ -1,0 +1,8 @@
+<p>Team grid</p>
+{% if section and section.teamMembers %}
+  {% for teamMembers in section.teamMembers %}
+    <img src="{% croppedUrlFor teamMembers.image, 600, 400 %}" alt="{{ teamMembers.image.alt }}">
+    <a href="/authors/{{ teamMembers.slug.current }}">{{ teamMembers.name }}</a>
+  {% endfor %}
+
+{% endif %}

@@ -1,8 +1,29 @@
 const { DateTime } = require("luxon");
 const util = require('util')
 const CleanCSS = require("clean-css");
+const urlFor = require('./utils/imageUrl');
 
 module.exports = function(eleventyConfig) {
+
+  // https://www.sanity.io/guides/how-to-add-promotional-images-to-the-11ty-blog-starter
+  eleventyConfig.addShortcode('imageUrlFor', (image, width="400") => {
+    return urlFor(image)
+      .width(width)
+      .auto('format')
+  })
+
+  eleventyConfig.addShortcode('croppedUrlFor', (image,width,height) => {
+    return urlFor(image)
+      .width(width)
+      .height(height)
+      .auto('format')
+  })
+
+  // Make Liquid capable of rendering "partials"
+  eleventyConfig.setLiquidOptions({
+    dynamicPartials: true,
+    strict_filters: true,
+  });
 
   // https://www.11ty.io/docs/quicktips/inline-css/
   eleventyConfig.addFilter("cssmin", function(code) {
