@@ -1,0 +1,7 @@
+<h2>Quote</h2>
+{% if section and section.text %}
+  <blockquote>{{ section.text }}</blockquote>
+  {% if section.citation  %}
+  <cite>{{ section.citation }}</cite>
+  {% endif %}
+{% endif %}

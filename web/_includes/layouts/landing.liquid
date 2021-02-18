@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-page
+---
+
+<article>
+  <h1>{{ landing.title }}</h1>
+
+   <time datetime="{{ landing.publishedAt }}">{{ landing.publishedAt|readableDate }}</time>
+
+  {% for section in landing.sections %}
+    {% assign sectionType = section._type %}
+    {% if section and sectionType %}
+      {% case sectionType %}
+        {% when 'video' %}
+          {% include 'components/video', section: section %}
+        {% when 'teamGrid' %}
+          {% include 'components/teamgrid', section: section %}
+        {% when 'pageBuilderBodyText' %}
+          {% include 'components/bodytext', section: section %}
+        {% when 'mainImage' %}
+          {% include 'components/mainimage', section: section %}
+        {% when 'quote' %}
+          {% include 'components/quote', section: section %}
+      {% endcase %}
+    {% endif %}
+  {% endfor %}
+
+</article>
+
+{% if landing.title == 'Create' %}
+  <h2>Case studies</h2>
+  {% for project in projects %}
+  <a href="/projects/{{ project.slug.current | url }}">
+    <h3>{{ project.title }}</h3>
+    <img src="{%  imageUrlFor project.mainImage, 900  %}" alt="{{ project.mainImage.alt }}">
+  </a>
+  {% endfor %}
+{% endif %}
+
+{% if landing.title == 'People' %}
+  <h2>Keep Reading</h2>
+  {% for post in post.opinion %}
+    {{ post.title }}
+  {% endfor %}
+{% endif %}

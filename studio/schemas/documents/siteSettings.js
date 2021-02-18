@@ -37,6 +37,11 @@ export default {
       type: 'array',
       title: 'Navigation items',
       of: [{type: 'navItem'}]
+    },
+    {
+      name: 'socialLinks',
+      type: 'socialLinks', // references socialLinks object
+      title: 'Social Links'
     }
   ]
 }

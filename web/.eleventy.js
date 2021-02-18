@@ -2,6 +2,8 @@ const { DateTime } = require("luxon");
 const util = require('util')
 const CleanCSS = require("clean-css");
 const urlFor = require('./utils/imageUrl');
+const BlocksToHtml = require('@sanity/block-content-to-html')
+const client = require('./utils/sanityClient.js')
 
 module.exports = function(eleventyConfig) {
 
@@ -17,6 +19,28 @@ module.exports = function(eleventyConfig) {
       .width(width)
       .height(height)
       .auto('format')
+  })
+
+  // Turn block to HTML from inside templates (only way I could make it work)
+  // https://github.com/sanity-io/block-content-to-html
+  eleventyConfig.addShortcode('blockToHtml', (block) => {
+    const h = BlocksToHtml.h
+
+    const serializers = {
+      types: {
+        code: props => (
+          h('pre', {className: props.node.language},
+            h('code', props.node.code)
+          )
+        )
+      }
+    }
+
+    return BlocksToHtml({ 
+      blocks: block, 
+      serializers: serializers, 
+      ...client.config() 
+    })
   })
 
   // Make Liquid capable of rendering "partials"
@@ -37,6 +61,22 @@ module.exports = function(eleventyConfig) {
    eleventyConfig.addFilter("readableDate", dateObj => {
     return new Date(dateObj).toDateString()
   });
+
+  // Log data to the terminal, like {{ article | log }} see: https://www.seanmcp.com/articles/logging-with-eleventy-and-nunjucks/
+  eleventyConfig.addFilter('log', value => {
+      console.log(value)
+  })
+
+  // Prints JSON to the page. Useful inside templates
+  eleventyConfig.addShortcode(
+    'debug',
+    (value) =>
+      `<div style="display: block;">
+        <pre style="padding: 100px 0; font-size: 14px; font-family: monospace;">
+        ${JSON.stringify(value, null, 2,)}
+        </pre>
+      </div>`,
+  )
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {

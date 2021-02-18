@@ -1,5 +1,5 @@
-{% comment %} {% if section and section.body %}
+{% if section and section.body %}
 <div>
-  {{ section.body | markdownify }}
+  {% blockToHtml section.body %}
 </div>
-{% endif %} {% endcomment %}
+{% endif %}

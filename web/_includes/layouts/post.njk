@@ -10,12 +10,14 @@ templateClass: tmpl-post
   <p>Written by 
   {% for author in post.authors %}
   <a href="/authors/{{ author.slug.current | slug }}/">
-    {{author.name}}
+    {{ author.name }}
+     <img src="{%  imageUrlFor author.image, 96  %}" alt="{{ author.image.alt }}">
   </a>
   {% endfor %}
   </p>
 
 
   {{ post.body | markdownify | safe }}
+  
   <p><a href="{{ '/' | url }}">← Home</a></p>
 </article>

@@ -17,7 +17,17 @@ async function getCategories () {
     // grab category data
     ...,
     // grab posts that reference author
-   "posts": *[_type == "post" && references(^._id)]{title, slug, mainImage}
+   "posts": *[_type == "post" && references(^._id)]{
+      title, 
+      slug, 
+      mainImage,
+      publishedAt, 
+      excerpt,
+      "categories": categories[]{
+        "title": ^->title,
+        "slug": ^->slug.current
+      }
+    }
   }`
   const query = [filter, projection].join(' ')
   const docs = await client.fetch(query).catch(err => console.error(err))

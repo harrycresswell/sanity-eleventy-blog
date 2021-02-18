@@ -8,7 +8,8 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import author from './documents/author'
 import category from './documents/category'
 import post from './documents/post'
-import page from './documents/page'
+import landing from './documents/landing'
+import project from './documents/project'
 import siteSettings from './documents/siteSettings'
 
 // Object types
@@ -23,6 +24,7 @@ import teamGrid from './objects/teamGrid'
 import link from './objects/link'
 import navItem from './objects/navItem'
 import pageBuilderBodyText from './objects/pageBuilderBodyText'
+import quote from './objects/quote'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -35,7 +37,8 @@ export default createSchema({
     // in the studio.
     siteSettings,
     post,
-    page,
+    landing,
+    project,
     category,
     author,
     mainImage,
@@ -48,7 +51,8 @@ export default createSchema({
     teamGrid,
     link,
     navItem,
-    pageBuilderBodyText
+    pageBuilderBodyText,
+    quote
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

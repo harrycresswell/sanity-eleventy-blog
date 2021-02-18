@@ -1,7 +1,7 @@
 export default {
-  name: 'page',
+  name: 'landing',
   type: 'document',
-  title: 'Page',
+  title: 'Landing pages',
   fields: [
     {
       name: 'title',
@@ -34,7 +34,8 @@ export default {
         {type: 'pageBuilderBodyText'},
         {type: 'video'},
         {type: 'mainImage'},
-        {type: 'teamGrid'}
+        {type: 'teamGrid'},
+        {type: 'quote'}
       ]
     }
   ]

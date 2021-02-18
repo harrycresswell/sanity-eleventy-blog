@@ -9,8 +9,16 @@ templateClass: tmpl-category
 <ul class="posts">
 {% for post in category.posts | reverse %}
   <li class="postlist-item"> 
-   <img src="{% croppedUrlFor post.mainImage, 600, 600 %}" alt="{{ post.mainImage.alt }}">
-   <h3><a href="/posts/{{post.slug.current | url }}">{{post.title}}</a></h3>
+    <img src="{% croppedUrlFor post.mainImage, 600, 600 %}" alt="{{ post.mainImage.alt }}">
+    <div class="post-content">
+      <h3><a href="/posts/{{post.slug.current | url }}">{{post.title}}</a></h3>
+      <time class="postlist-date" datetime="{{ post.publishedAt }}">{{ post.publishedAt|readableDate }}</time>
+    </div>
+    {% for category in post.categories %}
+      <div class="post-meta">
+        <a href="/categories/{{ category.slug | slug }}">{{ category.title }}</a>
+      </div>
+    {% endfor %}
   </li>
 {% endfor %}
 </ul>

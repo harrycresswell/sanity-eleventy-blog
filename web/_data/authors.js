@@ -18,9 +18,30 @@ async function getAuthors () {
   // https://www.sanity.io/docs/how-queries-work#our-first-join-52023b22ca05
   const projection = groq`{
     // grab author data
-    _id, name, bio,
+    _id, 
+    name, 
+    bio, 
+    image,
+    socialLinks,
     // grab posts that reference author
-   "posts": *[_type == "post" && references(^._id)]{title, slug, mainImage}
+   "posts": *[_type == "post" && references(^._id)]{
+      title, 
+      slug, 
+      mainImage, 
+      publishedAt, 
+      excerpt,
+      "categories": categories[]{
+        "title": ^->title,
+        "slug": ^->slug.current
+      }
+    },
+   "projects": *[_type == "project" && references(^._id)]{
+      title, 
+      slug, 
+      mainImage,
+      publishedAt, 
+      excerpt
+    }
   }`
   const query = [filter, projection].join(' ')
   const docs = await client.fetch(query).catch(err => console.error(err))

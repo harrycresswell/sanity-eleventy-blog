@@ -4,16 +4,64 @@ templateClass: tmpl-author
 ---
 <h1>{{ author.name }}</h1>
 
+<img src="{%  imageUrlFor author.image, 600  %}" alt="{{ author.image.alt }}">
+
 {{ author.bio | markdownify | safe }}
 
-<h2>Posts by {{ author.name }}</h2>
+{% if author.socialLinks %}
+  <ul>
+  {% set facebook = author.socialLinks.facebook %}
+  {% set instagram = author.socialLinks.instagram %}
+  {% set linkedin = author.socialLinks.linkedIn %}
+  {% set twitter = author.socialLinks.twitter %}
+  {% if facebook %}
+    <li><a href="{{ facebook }}" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+  {% endif %}
+  {% if instagram %}
+    <li><a href="{{ instagram }}" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+  {% endif %}
+  {% if linkedin %}
+    <li><a href="{{ linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+  {% endif %}
+  {% if twitter %}
+    <li><a href="{{ twitter }}" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+  {% endif %}
+  </ul>
+{% endif %}
+
+
+<h2>Posts by <span>{{ author.name }}</span></h2>
 <ul class="authorposts">
 {% for post in author.posts | reverse %}
   <li class="postlist-item"> 
-   <img src="{% croppedUrlFor post.mainImage, 600, 600 %}" alt="{{ post.mainImage.alt }}">
-   <h3><a href="/posts/{{post.slug.current | url }}">{{post.title}}</a></h3>
+    <img src="{% croppedUrlFor post.mainImage, 600, 600 %}" alt="{{ post.mainImage.alt }}">
+    <div class="post-content">
+      <h3><a href="/posts/{{post.slug.current | url }}">{{post.title}}</a></h3>
+      <time class="postlist-date" datetime="{{ post.publishedAt }}">{{ post.publishedAt|readableDate }}</time>
+    </div>
+    {% for category in post.categories %}
+      <div class="post-meta">
+        <a href="/categories/{{ category.slug | slug }}">{{ category.title }}</a>
+      </div>
+    {% endfor %}
   </li>
 {% endfor %}
 </ul>
+
+<h2>Case Studies by <span>{{ author.name }}</span></h2>
+<ul class="authorprojects">
+{% for project in author.projects | reverse %}
+  <li class="projectlist-item"> 
+  {% if project.mainImage %}
+      <img src="{% croppedUrlFor project.mainImage, 600, 400 %}" alt="{{ project.mainImage.alt }}">
+  {% endif %}
+    <div class="project-content">
+      <h3><a href="/projects/{{project.slug.current | url }}">{{project.title}}</a></h3>
+      <time class="projectlist-date" datetime="{{ project.publishedAt }}">{{ project.publishedAt|readableDate }}</time>
+    </div>
+  </li>
+{% endfor %}
+</ul>
+
 
 <p><a href="{{ '/' | url }}">← Home</a></p>

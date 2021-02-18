@@ -1,0 +1,51 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-project
+---
+
+<article>
+  {% if project.mainImage %}
+    <img src="{%  imageUrlFor project.mainImage, 900  %}" alt="{{ project.mainImage.alt }}">
+  {% endif %}
+  
+  <h1>
+    <span>{{ project.title }}</span>
+    <span>: {{ project.subtitle }}</span>
+  </h1>
+
+  <h2>{{ project.excerpt | markdownify }}</h2>
+  <p>{{ project.summary | markdownify }}</p>
+
+  {% if project.projectLink %}
+  <a href="{{ project.projectLink.linkUrl | url }}" target="_blank" rel="noopener noreferrer">
+  Visit website
+  </a>
+  {% endif %}
+
+
+  {% for section in project.sections %}
+    {% assign sectionType = section._type %}
+    {% if section and sectionType %}
+      {% case sectionType %}
+        {% when 'video' %}
+          {% include 'components/video', section: section %}
+        {% when 'teamGrid' %}
+          {% include 'components/teamgrid', section: section %}
+        {% when 'pageBuilderBodyText' %}
+            {% include 'components/bodytext', section: section %}
+      {% endcase %}
+    {% endif %}
+  {% endfor %}
+
+   <p>
+  <span>Written by </span>
+  {% for author in project.authors %}
+  <a href="/authors/{{ author.slug.current | slug }}/">
+    {{ author.name }}
+     <img src="{%  imageUrlFor author.image, 96  %}" alt="{{ author.image.alt }}">
+  </a>
+  {% endfor %}
+  </p>
+
+  <p><a href="{{ '/' | url }}">← Home</a></p>
+</article>

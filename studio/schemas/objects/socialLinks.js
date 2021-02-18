@@ -4,28 +4,28 @@ export default {
   title: 'Social Links',
   fields: [
     {
-      name: 'website',
+      name: 'facebook',
       type: 'url',
-      title: 'Website',
-      description: 'Add a website URL.'
+      title: 'Facebook',
+      description: 'Add a Facebook URL. For example, https://www.facebook.com/BuxtonThreeTwo'
     },
     {
       name: 'twitter',
       type: 'string',
       title: 'Twitter',
-      description: 'Add a Twitter handle e.g. @seedtribe.'
+      description: 'Add a Twitter URL. For example, https://twitter.com/BuxtonThreeTwo'
     },
     {
       name: 'instagram',
       type: 'string',
       title: 'Instagram',
-      description: 'Add an Instagram handle e.g. @seedtribe.'
+      description: 'Add an Instagram URL. For example, https://www.instagram.com/buxtonthreetwo/'
     },
     {
       name: 'linkedIn',
       type: 'url',
       title: 'LinkedIn',
-      description: 'Add a LinkedIn URL.'
+      description: 'Add a LinkedIn URL. For example, https://www.linkedin.com/company/buxtonthreetwo/'
     }
   ]
 }

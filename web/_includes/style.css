@@ -37,12 +37,17 @@ h2 {
 }
 
 h3 {
-    font-style: italic;
     font-weight: 400;
     font-size: 1.7rem;
     margin-top: 2rem;
     margin-bottom: 1.4rem;
     line-height: 1;
+}
+
+blockquote {
+    font-style: italic;
+    border-left: solid 2px;
+    padding-left: 48px;
 }
 
 img {
