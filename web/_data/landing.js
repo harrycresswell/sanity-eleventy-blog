@@ -41,6 +41,23 @@ async function getLandings () {
             "slug": @.author->slug
           }
         }
+      },
+      images[]{
+        ...,
+        asset->
+      },
+      // Is this correct for rendering posts in certain category??
+      postsCat->,
+      "posts": *[_type == "post" && references(^.postsCat)]{
+        title, 
+        slug, 
+        mainImage,
+        publishedAt, 
+        excerpt,
+        "categories": categories[]{
+          "title": ^->title,
+          "slug": ^->slug.current
+        }
       }
     }
   }`

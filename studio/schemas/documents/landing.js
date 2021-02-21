@@ -35,7 +35,9 @@ export default {
         {type: 'video'},
         {type: 'mainImage'},
         {type: 'teamGrid'},
-        {type: 'quote'}
+        {type: 'quote'},
+        {type: 'posts'},
+        {type: 'gallery'}
       ]
     }
   ]

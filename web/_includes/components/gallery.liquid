@@ -1,0 +1,10 @@
+<section class="{% if section.style == 'grid' %}grid{% elsif section.style == 'carousel' %}carousel{% elsif section.style == 'hSlider' %}hSlider{% endif %}">
+  {% for image in section.images %}
+    <figure>
+      <img src="{%  imageUrlFor image.asset.url, 900  %}" alt="{{ image.alt }}">
+      {% if image.caption %}
+        <figcaption>{{ image.caption }}</figcaption>
+      {% endif %}
+    </figure>
+  {% endfor %}
+</section>

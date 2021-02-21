@@ -25,6 +25,8 @@ import link from './objects/link'
 import navItem from './objects/navItem'
 import pageBuilderBodyText from './objects/pageBuilderBodyText'
 import quote from './objects/quote'
+import posts from './objects/posts'
+import gallery from './objects/gallery'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -52,7 +54,9 @@ export default createSchema({
     link,
     navItem,
     pageBuilderBodyText,
-    quote
+    quote,
+    posts,
+    gallery
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
