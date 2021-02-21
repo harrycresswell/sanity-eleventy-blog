@@ -20,7 +20,9 @@ export default {
         {type: 'teamGrid'},
         {type: 'quote'},
         {type: 'posts'},
-        {type: 'gallery'}
+        {type: 'gallery'},
+        {type: 'projectSlider'},
+        {type: 'postGrid'}
       ]
     }
   ]

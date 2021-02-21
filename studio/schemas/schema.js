@@ -28,6 +28,8 @@ import pageBuilderBodyText from './objects/pageBuilderBodyText'
 import quote from './objects/quote'
 import posts from './objects/posts'
 import gallery from './objects/gallery'
+import projectSlider from './objects/projectSlider'
+import postGrid from './objects/postGrid'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -58,7 +60,9 @@ export default createSchema({
     pageBuilderBodyText,
     quote,
     posts,
-    gallery
+    gallery,
+    projectSlider,
+    postGrid
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
