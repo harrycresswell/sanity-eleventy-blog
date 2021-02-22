@@ -24,9 +24,6 @@ templateClass: tmpl-page
           {% include 'components/quote', section: section %}
         {% when 'gallery' %}
           {% include 'components/gallery', section: section %}
-        {% comment %} Consider removing below? {% endcomment %}
-        {% when 'posts' %}
-            {{ section.postsCat.title }}
       {% endcase %}
     {% endif %}
 
