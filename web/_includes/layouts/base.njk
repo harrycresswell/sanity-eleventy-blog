@@ -12,6 +12,8 @@
     <style>
       {{ css | cssmin | safe }}
     </style>
+    <!-- Import Parcel generated CSS -->
+    <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
     <header>
@@ -62,6 +64,7 @@
       <p>&copy; <span id="year">2020</span> {{ metadata.title }}</p> 
     </footer>
 
-    <!-- Current page: {{ page.url | url }} -->
+    <!-- Import Parcel generated JS -->
+    <script src="/index.js"></script>
   </body>
 </html>

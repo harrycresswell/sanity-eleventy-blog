@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.scss","01-config/_variables.scss"],"names":[],"mappings":"AAEA;EACE,YCHI","file":"styles.css","sourceRoot":"../src/scss","sourcesContent":["@import '01-config/variables';\n\nbody {\n  background: $red;\n}\n","$red: lightgrey;"]}
