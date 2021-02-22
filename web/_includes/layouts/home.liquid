@@ -15,7 +15,12 @@ templateClass: tmpl-home
         {% when 'teamGrid' %}
           {% include 'components/teamgrid', section: section %}
         {% when 'pageBuilderBodyText' %}
-          {% include 'components/bodytext', section: section %}
+          {% comment %} {% include 'components/bodytext', section: section %} {% endcomment %}
+          {% if section and section.body %}
+            <div>
+              {% blockToHtml section.body %}
+            </div>
+          {% endif %}
         {% when 'mainImage' %}
           {% include 'components/mainimage', section: section %}
         {% when 'quote' %}
