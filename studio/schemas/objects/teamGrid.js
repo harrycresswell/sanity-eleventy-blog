@@ -1,7 +1,10 @@
+import {MdPeople} from 'react-icons/md'
+
 export default {
   name: 'teamGrid',
   type: 'object',
   title: 'Team Grid',
+  icon: MdPeople,
   fields: [
     {
       name: 'teamMembers',

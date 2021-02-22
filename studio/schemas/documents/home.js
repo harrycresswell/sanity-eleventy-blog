@@ -22,7 +22,8 @@ export default {
         {type: 'posts'},
         {type: 'gallery'},
         {type: 'projectSlider'},
-        {type: 'postGrid'}
+        {type: 'postGrid'},
+        {type: 'textCarousel'}
       ]
     }
   ]

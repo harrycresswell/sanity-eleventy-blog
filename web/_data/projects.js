@@ -33,6 +33,10 @@ async function getProjects () {
     mainImage,
     projectLink,
     "authors": authors[].author->,
+    "categories": categories[]{
+      "title": ^->title,
+  		"slug": ^->slug.current
+    },
     // expand sections array
     sections[]{
       // explicitly return all attributes

@@ -1,0 +1,18 @@
+<ol reversed class="postgrid">
+{% for post in section.posts %}
+  <li class="postlist-item">
+    <img src="{% croppedUrlFor post.mainImage, 600, 400 %}" alt="{{ post.mainImage.alt }}">
+    <div class="post-content">
+      <h2><a href="/blog/{{ post.slug.current | url }}" class="postlist-link">{{ post.title }}</a></h2> 
+      <time class="postlist-date" datetime="{{ post.publishedAt }}">{{ post.publishedAt | readableDate }}</time>
+      {% blockToHtml post.excerpt %}
+    </div> 
+   
+    {% for cat in post.catTitle %}
+      <div class="post-meta">
+       <a href="/categories/{{ cat | slug }}">{{ cat }}</a>
+      </div>
+    {% endfor %}
+  </li>
+{% endfor %}
+</ol>

@@ -1,7 +1,10 @@
+import {MdCompareArrows} from 'react-icons/md'
+
 export default {
   name: 'projectSlider',
   type: 'object',
   title: 'Project Slider',
+  icon: MdCompareArrows,
   fields: [
     {
       name: 'projects',

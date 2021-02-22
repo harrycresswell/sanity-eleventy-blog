@@ -1,7 +1,10 @@
+import {MdLibraryBooks} from 'react-icons/md'
+
 export default {
   name: 'postGrid',
   type: 'object',
   title: 'Post grid',
+  icon: MdLibraryBooks,
   fields: [
     {
       name: 'posts',

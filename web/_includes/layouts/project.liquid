@@ -37,6 +37,17 @@ templateClass: tmpl-project
     {% endif %}
   {% endfor %}
 
+  {% if project.categories %}
+  <ul>
+    {% for category in project.categories %}
+      <li>
+        {{ category.title }}
+      </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+
    <p>
   <span>Written by </span>
   {% for author in project.authors %}

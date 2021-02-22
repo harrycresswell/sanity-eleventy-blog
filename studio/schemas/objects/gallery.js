@@ -1,7 +1,10 @@
+import {MdViewModule} from 'react-icons/md'
+
 export default {
   name: 'gallery',
   type: 'object',
   title: 'Gallery',
+  icon: MdViewModule,
   fields: [
     {
       name: 'images',

@@ -1,0 +1,12 @@
+<ul reversed class="projectslider">
+{% for project in section.projects %}
+  <li class="projectslider-item">
+    <img src="{% croppedUrlFor project.mainImage, 600, 400 %}" alt="{{ project.mainImage.alt }}">
+    <div class="projectslider-content">
+      <h2><a href="/projects/{{ project.slug.current | url }}" class="projectslider-link">{{ project.title }}</a></h2> 
+      <time class="projectslider-date" datetime="{{ project.publishedAt }}">{{ project.publishedAt | readableDate }}</time>
+      {% blockToHtml project.excerpt %}
+    </div> 
+  </li>
+{% endfor %}
+</ul>

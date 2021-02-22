@@ -1,7 +1,10 @@
+import {MdComment} from 'react-icons/md'
+
 export default {
   name: 'quote',
   type: 'object',
   title: 'Quote',
+  icon: MdComment,
   fields: [
     {
       name: 'text',

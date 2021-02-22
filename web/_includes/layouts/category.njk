@@ -4,7 +4,9 @@ templateClass: tmpl-category
 ---
 <h1>{{ category.title }}</h1>
 
-{{ category.description | markdownify | safe }}
+{% if category.description %}
+  {{ category.description | markdownify | safe }}
+{% endif %}
 
 <ul class="posts">
 {% for post in category.posts | reverse %}

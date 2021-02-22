@@ -1,14 +1,12 @@
 ---
 layout: layouts/base.njk
-templateClass: tmpl-page
+templateClass: tmpl-home
 ---
 
 <article>
-  <h1>{{ landing.title }}</h1>
+  <h1>{{ home.headline }}</h1>
 
-   <time datetime="{{ landing.publishedAt }}">{{ landing.publishedAt|readableDate }}</time>
-
-  {% for section in landing.sections %}
+  {% for section in home.sections %}
     {% assign sectionType = section._type %}
     {% if section and sectionType %}
       {% case sectionType %}
@@ -24,27 +22,15 @@ templateClass: tmpl-page
           {% include 'components/quote', section: section %}
         {% when 'gallery' %}
           {% include 'components/gallery', section: section %}
-        {% comment %} Consider removing below? {% endcomment %}
-        {% when 'posts' %}
-            {{ section.postsCat.title }}
+        {% when 'postGrid' %}
+          {% include 'components/postgrid', section: section %}
+        {% when 'projectSlider' %}
+          {% include 'components/projectslider', section: section %}
+        {% when 'textCarousel' %}
+          {% include 'components/textcarousel', section: section %}
       {% endcase %}
     {% endif %}
 
   {% endfor %}
 
 </article>
-
-{% if landing.title == 'Create' %}
-  <h2>Case studies</h2>
-  {% for project in projects %}
-  <a href="/projects/{{ project.slug.current | url }}">
-    <h3>{{ project.title }}</h3>
-    <img src="{%  imageUrlFor project.mainImage, 900  %}" alt="{{ project.mainImage.alt }}">
-  </a>
-  {% endfor %}
-{% endif %}
-
-{% if landing.title == 'People' %}
-  <h2>Keep Reading</h2>
-  
-{% endif %}

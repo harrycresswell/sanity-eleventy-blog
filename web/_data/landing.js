@@ -24,7 +24,7 @@ async function getLandings () {
     sections[]{
       // explicitly return all attributes
       ...,
-      // expand teamMembers array
+      // expand teamMembers array for teamGrid component
       teamMembers[]{
         "name": ^->name,
         "slug": ^->slug,
@@ -42,9 +42,18 @@ async function getLandings () {
           }
         }
       },
+      // expand images array for gallery component
       images[]{
         ...,
         asset->
+      },
+      // expand posts array for postGrid component
+      posts[]{
+        "publishedAt": ^->publishedAt,
+        "title": ^->title,
+        "slug": ^->slug,
+        "excerpt": ^->excerpt,
+        "mainImage": ^->mainImage.asset->
       },
       // Is this correct for rendering posts in certain category??
       postsCat->,

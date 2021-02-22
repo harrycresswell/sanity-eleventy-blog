@@ -1,0 +1,22 @@
+{% if section %}
+<section class="TextCarousel">
+  <div class="TextCarousel-section">
+    <h4 class="TextCarousel-sectionTitle">{{ section.sectionOneTitle }}</h4>
+    <div class="TextCarousel-sectionText">
+      {% blockToHtml section.sectionOneText %}
+    </div>
+  </div>
+  <div class="TextCarousel-section">
+    <h4 class="TextCarousel-sectionTitle">{{ section.sectionTwoTitle }}</h4>
+    <div class="TextCarousel-sectionText">
+      {% blockToHtml section.sectionTwoText %}
+    </div>
+  </div>
+  <div class="TextCarousel-section">
+    <h4 class="TextCarousel-sectionTitle">{{ section.sectionThreeTitle }}</h4>
+    <div class="TextCarousel-sectionText">
+      {% blockToHtml section.sectionThreeText %}
+    </div>
+  </div>
+</section>
+{% endif %}

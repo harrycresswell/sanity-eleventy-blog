@@ -15,7 +15,7 @@
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
+      <a href="{{ '/' | url }}">{{ metadata.title }}</a>
       <ul class="nav">
         {% for navitem in metadata.navItems %}
           <li class="nav-item{% if navitem.navItemUrl.linkUrl == page.url %} nav-item-active{% endif %}">

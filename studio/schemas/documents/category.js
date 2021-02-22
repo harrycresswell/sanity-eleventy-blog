@@ -1,7 +1,10 @@
+import {MdLocalOffer} from 'react-icons/md'
+
 export default {
   name: 'category',
   type: 'document',
   title: 'Category',
+  icon: MdLocalOffer,
   fields: [
     {
       name: 'title',

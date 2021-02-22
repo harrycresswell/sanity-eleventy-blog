@@ -30,6 +30,7 @@ import posts from './objects/posts'
 import gallery from './objects/gallery'
 import projectSlider from './objects/projectSlider'
 import postGrid from './objects/postGrid'
+import textCarousel from './objects/textCarousel'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -62,7 +63,8 @@ export default createSchema({
     posts,
     gallery,
     projectSlider,
-    postGrid
+    postGrid,
+    textCarousel
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
